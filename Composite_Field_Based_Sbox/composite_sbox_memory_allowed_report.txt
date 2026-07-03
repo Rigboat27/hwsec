@@ -1,0 +1,513 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.66+89 (git sha1 05805e8b9, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 13.2.1)
+
+-- Running command `read_verilog sbox.v inverter.v transform.v squarer.v scaling_op.v xor_mod.v mult_4.v inverse.v inverse_transform.v A_mult.v; hierarchy -top sbox; proc; opt; flatten; opt; stat' --
+
+1. Executing Verilog-2005 frontend: sbox.v
+Parsing Verilog input from `sbox.v' to AST representation.
+Generating RTLIL representation for module `\sbox'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: inverter.v
+Parsing Verilog input from `inverter.v' to AST representation.
+Generating RTLIL representation for module `\inverter'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: transform.v
+Parsing Verilog input from `transform.v' to AST representation.
+Generating RTLIL representation for module `\transform'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: squarer.v
+Parsing Verilog input from `squarer.v' to AST representation.
+Generating RTLIL representation for module `\squarer'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: scaling_op.v
+Parsing Verilog input from `scaling_op.v' to AST representation.
+Generating RTLIL representation for module `\scaling_op'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: xor_mod.v
+Parsing Verilog input from `xor_mod.v' to AST representation.
+Generating RTLIL representation for module `\xor_mod'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: mult_4.v
+Parsing Verilog input from `mult_4.v' to AST representation.
+Generating RTLIL representation for module `\mult_4'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: inverse.v
+Parsing Verilog input from `inverse.v' to AST representation.
+Generating RTLIL representation for module `\inverse'.
+Note: Assuming pure combinatorial block at inverse.v:25.1-43.8 in
+compliance with IEC 62142(E):2005 / IEEE Std. 1364.1(E):2002. Recommending
+use of @* instead of @(...) for better match of synthesis and simulation.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: inverse_transform.v
+Parsing Verilog input from `inverse_transform.v' to AST representation.
+Generating RTLIL representation for module `\inverse_transform'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: A_mult.v
+Parsing Verilog input from `A_mult.v' to AST representation.
+Generating RTLIL representation for module `\A_mult'.
+Successfully finished Verilog frontend.
+
+11. Executing HIERARCHY pass (managing design hierarchy).
+
+11.1. Analyzing design hierarchy..
+Top module:  \sbox
+Used module:     \A_mult
+Used module:     \inverter
+Used module:         \inverse_transform
+Used module:         \mult_4
+Used module:         \inverse
+Used module:         \xor_mod
+Used module:         \scaling_op
+Used module:         \squarer
+Used module:         \transform
+
+11.2. Analyzing design hierarchy..
+Top module:  \sbox
+Used module:     \A_mult
+Used module:     \inverter
+Used module:         \inverse_transform
+Used module:         \mult_4
+Used module:         \inverse
+Used module:         \xor_mod
+Used module:         \scaling_op
+Used module:         \squarer
+Used module:         \transform
+Removed 0 unused modules.
+Mapping positional arguments of cell inverter.invT (inverse_transform).
+Mapping positional arguments of cell inverter.mul3 (mult_4).
+Mapping positional arguments of cell inverter.mul2 (mult_4).
+Mapping positional arguments of cell inverter.inv (inverse).
+Mapping positional arguments of cell inverter.xor2 (xor_mod).
+Mapping positional arguments of cell inverter.mul1 (mult_4).
+Mapping positional arguments of cell inverter.xor1 (xor_mod).
+Mapping positional arguments of cell inverter.sc_op (scaling_op).
+Mapping positional arguments of cell inverter.sq (squarer).
+Mapping positional arguments of cell inverter.T (transform).
+Mapping positional arguments of cell sbox.Amod (A_mult).
+Mapping positional arguments of cell sbox.invMod (inverter).
+
+12. Executing PROC pass (convert processes to netlists).
+
+12.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+12.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$inverse.v:25$103 in module inverse.
+Marked 1 switch rules as full_case in process $proc$inverse.v:25$103 in module inverse.
+Removed a total of 1 dead cases.
+
+12.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 1 assignment to connection.
+
+12.4. Executing PROC_INIT pass (extract init attributes).
+
+12.5. Executing PROC_ARST pass (detect async resets in processes).
+
+12.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 1 switch.
+
+12.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\inverse.$proc$inverse.v:25$103'.
+     1/1: $1\c[3:0]
+
+12.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\inverse.\c' from process `\inverse.$proc$inverse.v:25$103'.
+
+12.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+12.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+12.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\inverse.$proc$inverse.v:25$103'.
+Removing empty process `inverse.$proc$inverse.v:25$103'.
+Cleaned up 1 empty switch.
+
+12.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module A_mult.
+<suppressed ~40 debug messages>
+Optimizing module inverse_transform.
+<suppressed ~29 debug messages>
+Optimizing module inverse.
+Optimizing module mult_4.
+Optimizing module xor_mod.
+Optimizing module scaling_op.
+Optimizing module squarer.
+<suppressed ~6 debug messages>
+Optimizing module transform.
+<suppressed ~28 debug messages>
+Optimizing module inverter.
+Optimizing module sbox.
+<suppressed ~4 debug messages>
+
+13. Executing OPT pass (performing simple optimizations).
+
+13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module A_mult.
+Optimizing module inverse_transform.
+Optimizing module inverse.
+Optimizing module mult_4.
+Optimizing module xor_mod.
+Optimizing module scaling_op.
+Optimizing module squarer.
+Optimizing module transform.
+Optimizing module inverter.
+Optimizing module sbox.
+
+13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\A_mult'.
+Computing hashes of 32 cells of `\A_mult'.
+Finding duplicate cells in `\A_mult'.
+Computing hashes of 29 cells of `\A_mult'.
+Finding duplicate cells in `\A_mult'.
+Computing hashes of 27 cells of `\A_mult'.
+Finding duplicate cells in `\A_mult'.
+Computing hashes of 26 cells of `\A_mult'.
+Finding duplicate cells in `\A_mult'.
+<suppressed ~18 debug messages>
+Finding identical cells in module `\inverse_transform'.
+Computing hashes of 21 cells of `\inverse_transform'.
+Finding duplicate cells in `\inverse_transform'.
+Computing hashes of 18 cells of `\inverse_transform'.
+Finding duplicate cells in `\inverse_transform'.
+Computing hashes of 17 cells of `\inverse_transform'.
+Finding duplicate cells in `\inverse_transform'.
+<suppressed ~12 debug messages>
+Finding identical cells in module `\inverse'.
+Computing hashes of 2 cells of `\inverse'.
+Finding duplicate cells in `\inverse'.
+Finding identical cells in module `\mult_4'.
+Computing hashes of 40 cells of `\mult_4'.
+Finding duplicate cells in `\mult_4'.
+Computing hashes of 34 cells of `\mult_4'.
+Finding duplicate cells in `\mult_4'.
+<suppressed ~18 debug messages>
+Finding identical cells in module `\xor_mod'.
+Computing hashes of 1 cells of `\xor_mod'.
+Finding duplicate cells in `\xor_mod'.
+Finding identical cells in module `\scaling_op'.
+Computing hashes of 1 cells of `\scaling_op'.
+Finding duplicate cells in `\scaling_op'.
+Finding identical cells in module `\squarer'.
+Computing hashes of 2 cells of `\squarer'.
+Finding duplicate cells in `\squarer'.
+Finding identical cells in module `\transform'.
+Computing hashes of 20 cells of `\transform'.
+Finding duplicate cells in `\transform'.
+Computing hashes of 17 cells of `\transform'.
+Finding duplicate cells in `\transform'.
+Computing hashes of 16 cells of `\transform'.
+Finding duplicate cells in `\transform'.
+<suppressed ~12 debug messages>
+Finding identical cells in module `\inverter'.
+Computing hashes of 10 cells of `\inverter'.
+Finding duplicate cells in `\inverter'.
+Finding identical cells in module `\sbox'.
+Computing hashes of 6 cells of `\sbox'.
+Finding duplicate cells in `\sbox'.
+Removed a total of 20 cells.
+
+13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \A_mult..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inverse_transform..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inverse..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \mult_4..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \xor_mod..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \scaling_op..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \squarer..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \transform..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inverter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sbox..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \A_mult.
+  Optimizing cells in module \inverse_transform.
+  Optimizing cells in module \inverse.
+  Optimizing cells in module \mult_4.
+  Optimizing cells in module \xor_mod.
+  Optimizing cells in module \scaling_op.
+  Optimizing cells in module \squarer.
+  Optimizing cells in module \transform.
+  Optimizing cells in module \inverter.
+  Optimizing cells in module \sbox.
+Performed a total of 0 changes.
+
+13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\A_mult'.
+Computing hashes of 26 cells of `\A_mult'.
+Finding duplicate cells in `\A_mult'.
+Finding identical cells in module `\inverse_transform'.
+Computing hashes of 17 cells of `\inverse_transform'.
+Finding duplicate cells in `\inverse_transform'.
+Finding identical cells in module `\inverse'.
+Computing hashes of 2 cells of `\inverse'.
+Finding duplicate cells in `\inverse'.
+Finding identical cells in module `\mult_4'.
+Computing hashes of 34 cells of `\mult_4'.
+Finding duplicate cells in `\mult_4'.
+Finding identical cells in module `\xor_mod'.
+Computing hashes of 1 cells of `\xor_mod'.
+Finding duplicate cells in `\xor_mod'.
+Finding identical cells in module `\scaling_op'.
+Computing hashes of 1 cells of `\scaling_op'.
+Finding duplicate cells in `\scaling_op'.
+Finding identical cells in module `\squarer'.
+Computing hashes of 2 cells of `\squarer'.
+Finding duplicate cells in `\squarer'.
+Finding identical cells in module `\transform'.
+Computing hashes of 16 cells of `\transform'.
+Finding duplicate cells in `\transform'.
+Finding identical cells in module `\inverter'.
+Computing hashes of 10 cells of `\inverter'.
+Finding duplicate cells in `\inverter'.
+Finding identical cells in module `\sbox'.
+Computing hashes of 6 cells of `\sbox'.
+Finding duplicate cells in `\sbox'.
+Removed a total of 0 cells.
+
+13.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \A_mult..
+Finding unused cells or wires in module \inverse_transform..
+Finding unused cells or wires in module \inverse..
+Finding unused cells or wires in module \mult_4..
+Finding unused cells or wires in module \xor_mod..
+Finding unused cells or wires in module \scaling_op..
+Finding unused cells or wires in module \squarer..
+Finding unused cells or wires in module \transform..
+Finding unused cells or wires in module \inverter..
+Finding unused cells or wires in module \sbox..
+Removed 0 unused cells and 140 unused wires.
+<suppressed ~9 debug messages>
+
+13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module A_mult.
+Optimizing module inverse_transform.
+Optimizing module inverse.
+Optimizing module mult_4.
+Optimizing module xor_mod.
+Optimizing module scaling_op.
+Optimizing module squarer.
+Optimizing module transform.
+Optimizing module inverter.
+Optimizing module sbox.
+
+13.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+13.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \A_mult..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inverse_transform..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inverse..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \mult_4..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \xor_mod..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \scaling_op..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \squarer..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \transform..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \inverter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sbox..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+13.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \A_mult.
+  Optimizing cells in module \inverse_transform.
+  Optimizing cells in module \inverse.
+  Optimizing cells in module \mult_4.
+  Optimizing cells in module \xor_mod.
+  Optimizing cells in module \scaling_op.
+  Optimizing cells in module \squarer.
+  Optimizing cells in module \transform.
+  Optimizing cells in module \inverter.
+  Optimizing cells in module \sbox.
+Performed a total of 0 changes.
+
+13.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\A_mult'.
+Computing hashes of 26 cells of `\A_mult'.
+Finding duplicate cells in `\A_mult'.
+Finding identical cells in module `\inverse_transform'.
+Computing hashes of 17 cells of `\inverse_transform'.
+Finding duplicate cells in `\inverse_transform'.
+Finding identical cells in module `\inverse'.
+Computing hashes of 2 cells of `\inverse'.
+Finding duplicate cells in `\inverse'.
+Finding identical cells in module `\mult_4'.
+Computing hashes of 34 cells of `\mult_4'.
+Finding duplicate cells in `\mult_4'.
+Finding identical cells in module `\xor_mod'.
+Computing hashes of 1 cells of `\xor_mod'.
+Finding duplicate cells in `\xor_mod'.
+Finding identical cells in module `\scaling_op'.
+Computing hashes of 1 cells of `\scaling_op'.
+Finding duplicate cells in `\scaling_op'.
+Finding identical cells in module `\squarer'.
+Computing hashes of 2 cells of `\squarer'.
+Finding duplicate cells in `\squarer'.
+Finding identical cells in module `\transform'.
+Computing hashes of 16 cells of `\transform'.
+Finding duplicate cells in `\transform'.
+Finding identical cells in module `\inverter'.
+Computing hashes of 10 cells of `\inverter'.
+Finding duplicate cells in `\inverter'.
+Finding identical cells in module `\sbox'.
+Computing hashes of 6 cells of `\sbox'.
+Finding duplicate cells in `\sbox'.
+Removed a total of 0 cells.
+
+13.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+13.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \A_mult..
+Finding unused cells or wires in module \inverse_transform..
+Finding unused cells or wires in module \inverse..
+Finding unused cells or wires in module \mult_4..
+Finding unused cells or wires in module \xor_mod..
+Finding unused cells or wires in module \scaling_op..
+Finding unused cells or wires in module \squarer..
+Finding unused cells or wires in module \transform..
+Finding unused cells or wires in module \inverter..
+Finding unused cells or wires in module \sbox..
+
+13.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module A_mult.
+Optimizing module inverse_transform.
+Optimizing module inverse.
+Optimizing module mult_4.
+Optimizing module xor_mod.
+Optimizing module scaling_op.
+Optimizing module squarer.
+Optimizing module transform.
+Optimizing module inverter.
+Optimizing module sbox.
+
+13.16. Finished fast OPT passes. (There is nothing left to do.)
+
+14. Executing FLATTEN pass (flatten design).
+Deleting now unused module A_mult.
+Deleting now unused module inverse_transform.
+Deleting now unused module inverse.
+Deleting now unused module mult_4.
+Deleting now unused module xor_mod.
+Deleting now unused module scaling_op.
+Deleting now unused module squarer.
+Deleting now unused module transform.
+Deleting now unused module inverter.
+<suppressed ~12 debug messages>
+
+15. Executing OPT pass (performing simple optimizations).
+
+15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sbox.
+
+15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sbox'.
+Computing hashes of 184 cells of `\sbox'.
+Finding duplicate cells in `\sbox'.
+Removed a total of 0 cells.
+
+15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \sbox..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \sbox.
+Performed a total of 0 changes.
+
+15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\sbox'.
+Computing hashes of 184 cells of `\sbox'.
+Finding duplicate cells in `\sbox'.
+Removed a total of 0 cells.
+
+15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \sbox..
+
+15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sbox.
+
+15.9. Finished fast OPT passes. (There is nothing left to do.)
+
+16. Printing statistics.
+
+=== sbox ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      193 wires
+     2262 wire bits
+       42 public wires
+      220 public wire bits
+        2 ports
+       16 port bits
+        1 memories
+       64 memory bits
+      184 cells
+       48   $and
+        1   $meminit
+        1   $memrd_v2
+        4   $not
+       12   $scopeinfo
+      118   $xor
+
+End of script. Logfile hash: b0273e13ca
+Yosys 0.66+89 (git sha1 05805e8b9, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 13.2.1)
+Time spent: 4% 11x read_verilog (0 sec), 4% 6x opt_expr (0 sec), ...

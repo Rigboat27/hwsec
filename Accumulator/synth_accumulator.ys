@@ -1,0 +1,20 @@
+read_verilog test.v accumulator.v adder_struct.v dff.v half_addr.v full_addr.v
+hierarchy -top accumulator
+proc //Converts processes to logic
+memory_map
+opt //First optimization pass
+flatten
+opt
+techmap //Mapping the abstract logic gates to standard cells
+opt //Second optimization pass
+dfflibmap -liberty "G:\ACM_Summer_School_Materials\NangateOpenCellLibrary_typical.lib"
+abc -liberty "G:\ACM_Summer_School_Materials\NangateOpenCellLibrary_typical.lib" //invokes the ABC
+
+logic synthesis engine
+
+clean
+stat //print design stats
+write_verilog -noattr accumulator_nangate45.v //noattr is important,
+it removes any Yosys generated attributes or comments
+
+show -format png -prefix accumulator_nangate45

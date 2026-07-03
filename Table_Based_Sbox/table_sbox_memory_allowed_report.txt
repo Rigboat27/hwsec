@@ -1,0 +1,150 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.66+89 (git sha1 05805e8b9, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 13.2.1)
+
+-- Running command `read_verilog aes_sbox.v; hierarchy -top aes_sbox; proc; opt; stat' --
+
+1. Executing Verilog-2005 frontend: aes_sbox.v
+Parsing Verilog input from `aes_sbox.v' to AST representation.
+Generating RTLIL representation for module `\aes_sbox'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \aes_sbox
+
+2.2. Analyzing design hierarchy..
+Top module:  \aes_sbox
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$aes_sbox.v:12$1 in module aes_sbox.
+Marked 1 switch rules as full_case in process $proc$aes_sbox.v:12$1 in module aes_sbox.
+Removed a total of 1 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 1 assignment to connection.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 1 switch.
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\aes_sbox.$proc$aes_sbox.v:12$1'.
+     1/1: $1\out[7:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\aes_sbox.\out' from process `\aes_sbox.$proc$aes_sbox.v:12$1'.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\aes_sbox.$proc$aes_sbox.v:12$1'.
+Removing empty process `aes_sbox.$proc$aes_sbox.v:12$1'.
+Cleaned up 1 empty switch.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module aes_sbox.
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module aes_sbox.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\aes_sbox'.
+Computing hashes of 2 cells of `\aes_sbox'.
+Finding duplicate cells in `\aes_sbox'.
+Removed a total of 0 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \aes_sbox..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \aes_sbox.
+Performed a total of 0 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\aes_sbox'.
+Computing hashes of 2 cells of `\aes_sbox'.
+Finding duplicate cells in `\aes_sbox'.
+Removed a total of 0 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \aes_sbox..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module aes_sbox.
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \aes_sbox..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \aes_sbox.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\aes_sbox'.
+Computing hashes of 2 cells of `\aes_sbox'.
+Finding duplicate cells in `\aes_sbox'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \aes_sbox..
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module aes_sbox.
+
+4.16. Finished fast OPT passes. (There is nothing left to do.)
+
+5. Printing statistics.
+
+=== aes_sbox ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        2 wires
+       16 wire bits
+        2 public wires
+       16 public wire bits
+        2 ports
+       16 port bits
+        1 memories
+     2048 memory bits
+        2 cells
+        1   $meminit
+        1   $memrd_v2
+
+End of script. Logfile hash: 514294b3bd
+Yosys 0.66+89 (git sha1 05805e8b9, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 13.2.1)
+Time spent: 4% 4x opt_expr (0 sec), 4% 3x opt_merge (0 sec), ...
