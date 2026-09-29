@@ -1,6 +1,6 @@
 # hwsec
 
-Work from the ACM India Summer School on hardware security, summer 2025, run by the Trust Lab at IIT Bombay (ACM handled the logistics).
+Work from the Summer School 2026 on hardware security at the Trust Lab at IIT Bombay
 
 The school had two halves, and this repo follows them. In the first half I built AES in hardware: gate-level warm-up, then the S-box two different ways, then a full AES-128 core, with synthesis numbers for each. In the second half the same cipher got attacked through timing, power and faults. Seeing both sides changed how I read RTL. A design that is correct in simulation can still hand over its key to someone with an oscilloscope.
 
@@ -58,6 +58,6 @@ The committed synthesis reports in `02-sbox/reports` came from Yosys 0.66. An ol
 
 ## Notes
 
-- The lab code in this repo was rewritten after the program. My original notebooks live on another machine.
-- Several files started as course scaffolding: the Verilog templates, the lab notebooks, and the round-8 DFA tutorial by Sayandeep Saha. The CPA traces are the ones handed out in the lab.
+- The lab code in this repo was rewritten after the summer
+- Several files started as course scaffolding: the Verilog templates, the lab notebooks, and the round-8 DFA tutorial by Proff. Sayandeep Saha. The CPA traces are the ones handed out in the lab.
 - `libs/` has the Nangate 45nm Open Cell Library used for all the area numbers.
