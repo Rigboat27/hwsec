@@ -1,0 +1,7 @@
+# 4-input LUTs.
+read_verilog ../table/aes_sbox.v
+hierarchy -top aes_sbox
+proc; memory_map; opt; flatten; opt
+techmap; opt
+abc -lut 4; opt
+stat

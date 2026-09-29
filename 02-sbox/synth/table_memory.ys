@@ -1,0 +1,6 @@
+# Keep the ROM as a memory; shows the raw storage cost.
+read_verilog ../table/aes_sbox.v
+hierarchy -top aes_sbox
+proc; opt
+
+stat

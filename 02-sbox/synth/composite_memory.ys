@@ -1,0 +1,6 @@
+# Keep the ROM as a memory; shows the raw storage cost.
+read_verilog ../composite/sbox.v ../composite/inverter.v ../composite/transform.v ../composite/squarer.v ../composite/scaling_op.v ../composite/xor_mod.v ../composite/mult_4.v ../composite/inverse.v ../composite/inverse_transform.v ../composite/A_mult.v
+hierarchy -top sbox
+proc; opt
+flatten; opt
+stat

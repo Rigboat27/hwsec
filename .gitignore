@@ -1,0 +1,7 @@
+build/
+*.vcd
+*.out
+__pycache__/
+.ipynb_checkpoints/
+04-timing-attack/password.txt
+01-accumulator/accumulator_nangate45.v

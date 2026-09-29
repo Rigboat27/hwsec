@@ -1,0 +1,4 @@
+# Xilinx 7-series. Composite is flattened so both designs are compared as one function.
+read_verilog ../table/aes_sbox.v
+synth_xilinx -family xc7 -top aes_sbox -flatten
+stat

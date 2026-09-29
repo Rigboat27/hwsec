@@ -1,0 +1,15 @@
+# Synthesize the accumulator onto Nangate 45nm cells. Run from this folder.
+read_verilog accumulator.v adder_struct.v dff.v half_addr.v full_addr.v
+hierarchy -top accumulator
+proc
+memory_map
+opt
+flatten
+opt
+techmap
+opt
+dfflibmap -liberty ../libs/NangateOpenCellLibrary_typical.lib
+abc -liberty ../libs/NangateOpenCellLibrary_typical.lib
+clean
+stat -liberty ../libs/NangateOpenCellLibrary_typical.lib
+write_verilog -noattr accumulator_nangate45.v

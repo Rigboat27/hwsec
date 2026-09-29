@@ -1,0 +1,7 @@
+# Generic gates.
+read_verilog ../table/aes_sbox.v
+hierarchy -top aes_sbox
+proc; memory_map; opt; flatten; opt
+techmap; opt
+abc -g AND,OR,XOR,XNOR,NAND,NOR,MUX; opt
+stat
