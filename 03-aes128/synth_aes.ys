@@ -1,0 +1,13 @@
+# Whole AES-128 core on Nangate 45nm cells. Run from this folder.
+read_verilog aescipher.v rounds.v rounndlast.v KeyGeneration.v subbytes.v shiftrow.v mixcolumn.v
+read_verilog ../02-sbox/composite/sbox.v ../02-sbox/composite/inverter.v ../02-sbox/composite/transform.v
+read_verilog ../02-sbox/composite/squarer.v ../02-sbox/composite/scaling_op.v ../02-sbox/composite/xor_mod.v
+read_verilog ../02-sbox/composite/mult_4.v ../02-sbox/composite/inverse.v ../02-sbox/composite/inverse_transform.v
+read_verilog ../02-sbox/composite/A_mult.v
+hierarchy -top aescipher
+proc; opt; flatten; opt
+techmap; opt
+dfflibmap -liberty ../libs/NangateOpenCellLibrary_typical.lib
+abc -liberty ../libs/NangateOpenCellLibrary_typical.lib
+opt_clean
+stat -liberty ../libs/NangateOpenCellLibrary_typical.lib

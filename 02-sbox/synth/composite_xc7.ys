@@ -1,0 +1,4 @@
+# Xilinx 7-series. Composite is flattened so both designs are compared as one function.
+read_verilog ../composite/sbox.v ../composite/inverter.v ../composite/transform.v ../composite/squarer.v ../composite/scaling_op.v ../composite/xor_mod.v ../composite/mult_4.v ../composite/inverse.v ../composite/inverse_transform.v ../composite/A_mult.v
+synth_xilinx -family xc7 -top sbox -flatten
+stat

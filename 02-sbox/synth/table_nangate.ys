@@ -1,0 +1,7 @@
+# Nangate 45nm standard cells, area in um^2.
+read_verilog ../table/aes_sbox.v
+hierarchy -top aes_sbox
+proc; memory_map; opt; flatten; opt
+techmap; opt
+abc -liberty ../../libs/NangateOpenCellLibrary_typical.lib; opt
+stat -liberty ../../libs/NangateOpenCellLibrary_typical.lib
